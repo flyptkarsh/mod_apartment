@@ -1,0 +1,66 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
+  <head data-hook="inside_head">
+    <%= render partial: 'spree/shared/head' %>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900italic,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Engagement' rel='stylesheet' type='text/css'>
+  </head>
+  <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
+    <%= render partial: 'spree/shared/google_analytics.js' %>
+    <ul class="navigation">
+      <p>
+        <%= render partial: 'spree/shared/login_bar' %>
+      </p>
+      <p id="link-to-cart" data-hook>
+        <noscript>
+          <%= link_to Spree.t(:cart), '/cart' %>
+        </noscript>
+        &nbsp;
+      </p>
+      <script>Spree.fetch_cart()</script>
+      <% if  @taxonomies.present? %>
+        <nav id="taxonomies" class="sidebar-item" data-hook>
+          <% max_level = Spree::Config[:max_level_in_taxons_menu] || 1 %>
+          <% @taxonomies.each do |taxonomy| %>
+            <% cache [I18n.locale, taxonomy, max_level, @taxon] do %>
+              <p class='taxonomy-root'><%= Spree.t(:shop_by_taxonomy, taxonomy: taxonomy.name) %></p>
+              <%= taxons_tree(taxonomy.root, @taxon, max_level) %>
+            <% end %>
+          <% end %>
+        </nav>
+      <% end %>
+
+
+      <hr>
+      <p><a href="/">Shop</a></p>
+      <p><a href="/about">About</a></p>
+      <p><a href="/blog">Blog</a></p>
+      <p><a href="/contact">Contact</a></p>
+    </ul>
+
+    <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+    <label for="nav-trigger">  <h2><%= image_tag("menu.svg", width: 30)%> Rich Leatherman </h2></label>
+
+    <div class="site-wrap">
+        <br>
+        <br>
+        <br>
+        <div class="container">
+          <div class="row" data-hook>
+            <%= breadcrumbs(@taxon) %>
+            <div id="content" class="col-sm-12" data-hook>
+              <%= flash_messages %>
+              <%= yield %>
+            </div>
+
+            <%= yield :templates %>
+          </div>
+        </div>
+    </div>
+
+  </body>
+</html>
