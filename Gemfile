@@ -43,6 +43,8 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'paperclip'
+gem 'aws-sdk', '< 2.0'
 gem 'spree', '~> 3.1.0'
 gem 'spree_auth_devise', '~> 3.1.0'
 gem 'spree_gateway', '~> 3.1.0'
