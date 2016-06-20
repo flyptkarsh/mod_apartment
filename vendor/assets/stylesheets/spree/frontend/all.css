@@ -47,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     top: 0;
     bottom: 100%;
-    left: 0;
+    left: 4em;
     z-index: 1;
     padding: 4em;
     background: white url("http://www.transparenttextures.com/patterns/large-leather.png") center center !important;
@@ -61,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
 label[for="nav-trigger"] {
     position: fixed;
     top: 15px;
-    left: 15px;
+    left: 6em;
     z-index: 2;
     cursor: pointer;
     background-size: contain;
