@@ -1,4 +1,4 @@
-== Modern Apartment
+## Modern Apartment
 
 Modern Apartment is an e-commerce site built using Ruby on Rails and Spree
 

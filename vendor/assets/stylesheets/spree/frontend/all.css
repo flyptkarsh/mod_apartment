@@ -17,7 +17,6 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Abril Fatface', cursive;
-
 }
 
 .navigation {
@@ -32,7 +31,14 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     z-index: 0;
     color: white;
+    font-family: 'Abril Fatface', cursive !important;
+    font-size: large;
 }
+.navigation p a {
+  color: white;
+  text-shadow: -2px -2px 4px #000000;
+}
+
 
 .site-wrap {
     min-width: 100%;
